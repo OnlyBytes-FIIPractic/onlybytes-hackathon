@@ -63,7 +63,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
       <div
         className={`relative`}
       >
-        <Link to="/" className="py-5 flex items-center justify-center">
+        {/* <Link to="/" className="py-5 flex items-center justify-center">
           <img src={brandImg} alt="logo" className="h-12" />
             <Typography
               variant="h3"
@@ -72,7 +72,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
             >
               {brandName}
             </Typography>
-        </Link>
+        </Link> */}
         <IconButton
           variant="text"
           color="white"
