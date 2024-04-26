@@ -1,7 +1,6 @@
 import {
   HomeIcon,
   UserCircleIcon,
-  TableCellsIcon,
   InformationCircleIcon,
   ServerStackIcon,
   RectangleStackIcon,
@@ -9,8 +8,6 @@ import {
 import { Home, Profile } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
 import ProjectDetails from "./pages/projectOverview/ProjectDetails";
-import ResetPassword from "./pages/auth/ResetPassword";
-import VerifyResetCode from "./pages/auth/VerifyResetCode";
 import SendResetCode from "./pages/auth/SendResetCode";
 
 const icon = {
@@ -63,18 +60,7 @@ export const routes = [
         path: "/forgot-password",
         element: <SendResetCode />,
       },
-      {
-        icon: <TableCellsIcon {...icon} />,
-        name: "verify reset",
-        path: "/verify-reset",
-        element: <VerifyResetCode />,
-      },
-      {
-        icon: <TableCellsIcon {...icon} />,
-        name: "reset password",
-        path: "/reset-password",
-        element: <ResetPassword />,
-      }
+
     ],
   },
 ];

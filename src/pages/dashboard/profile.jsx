@@ -1,9 +1,11 @@
+import {useState} from "react";
 import {
   Card,
   CardBody,
   Avatar,
   Typography,
   Tooltip, Button,
+  Dialog,
 } from "@material-tailwind/react";
 import {
   PencilIcon,
@@ -11,9 +13,14 @@ import {
 import { ProfileInfoCard } from "@/widgets/cards";
 import {useUser} from "@/context/LoginRequired.jsx";
 import {Link} from "react-router-dom";
+import { UserAuth } from "@/context/AuthContext";
+import {DialogActions, DialogTitle} from "@mui/material";
+
 
 export function Profile() {
-    const user = useUser();
+  const [showLogoutDialog, setShowLogoutDialog] = useState(false);
+
+  const {user, logout} = UserAuth();
 
   return (
     <>
@@ -34,12 +41,6 @@ export function Profile() {
               <div>
                 <Typography variant="h5" className="mb-1 text-surface-light">
                     {user?.name || "John Doe"}
-                </Typography>
-                <Typography
-                  variant="small"
-                  className="font-normal text-surface-mid-light"
-                >
-                    {user?.role || "Unknown role"}
                 </Typography>
               </div>
             </div>
@@ -67,13 +68,36 @@ export function Profile() {
               }
             />
           </div>
-            <div className="flex items-center justify-between flex-wrap gap-6">
-              <Link to="/auth/sign-in" className="ml-auto">
-                <Button
-                    className="shadow-md bg-secondary hover:bg-primary"
-                    ripple
-                >Log out</Button>
-              </Link>
+           <div className="flex items-center justify-between flex-wrap gap-6">
+              <Button
+                className="shadow-md bg-secondary hover:bg-primary ml-auto"
+                ripple
+                onClick={() => setShowLogoutDialog(true)}
+              >
+                Log out
+              </Button>
+              <Dialog
+                open={showLogoutDialog}
+                handler={() => setShowLogoutDialog(false)}
+                className="bg-surface-dark p-5"
+                size={"sm"}
+              >
+                <DialogTitle className={"text-surface-light"}>Are you sure you want to log out?</DialogTitle>
+                <DialogActions className={"mt-5"}>
+                  <Link to="/auth/sign-in">
+                    <Button
+                      className="shadow-md bg-secondary hover:bg-primary"
+                      ripple
+                      onClick={logout}
+                    >
+                      Log out
+                    </Button>
+                  </Link>
+                  <Button onClick={() => setShowLogoutDialog(false)}>
+                    Cancel
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </div>
         </CardBody>
       </Card>

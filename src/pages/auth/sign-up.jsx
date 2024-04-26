@@ -1,58 +1,27 @@
 import {
   Input,
-  Checkbox,
   Button,
   Typography,
 } from "@material-tailwind/react";
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import api from "../../services/api";
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { UserAuth } from "@/context/AuthContext";
 
-const baseURL = "https://localhost:7248/api/v1/Authentication/register";
 
 export function SignUp() {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
-    username: '',
-    name: '',
+    // username: '',
+    // name: '',
     email: '',
     password: '',
     confirmPassword: ''
   });
+  const { createUser } = UserAuth();
 
-  const register = async (register_data) => {
-    try {
-      const response = await api.post("/api/v1/Authentication/register", {
-        username: register_data.username,
-        name: register_data.name,
-        email: register_data.email,
-        password: register_data.password,
-      });
-
-      if (response.status === 201) {
-        navigate('/auth/sign-in');
-        toast.success("Registration Successful");
-      } else {
-        toast.error("Registration failed");
-      }
-    } catch (error) {
-      let errorMessage = "Registration failed";
-      if (axios.isAxiosError(error) && error.response) {
-        console.error("Server response:", error.response);
-        if (error.response.data) {
-          errorMessage += ": " + error.response.data;
-        }
-      } else if (error instanceof Error) {
-        errorMessage += ": " + error.message;
-      }
-      toast.error(errorMessage);
-    }
-
-  };
+  
 
   const validatePassword = (password) => {
     if(password.length < 7){
@@ -72,10 +41,10 @@ export function SignUp() {
     setInputs(prev => ({...prev,[name]:value}));
   }
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
 
-    if(inputs.username === '' || inputs.name === '' || inputs.email === '' || inputs.password === '' || inputs.confirmPassword === ''){
+    if(inputs.email === '' || inputs.password === '' || inputs.confirmPassword === ''){
       toast.error("Please fill all the fields");
       return;
     }
@@ -87,8 +56,16 @@ export function SignUp() {
     if(!validatePassword(inputs.password)){
       return;
     }
-      register(inputs);
+    try {
+      await createUser(inputs.email, inputs.password);
+      toast.success('Account created successfully')
+      navigate('/account')
+    } catch (e) {
+      toast.error(e.message)
+      console.log(e.message);
+    }
   }
+
   return (
     <section className="p-8 flex text-surface-light">
             <div className="w-2/5  h-full hidden lg:block">
@@ -100,7 +77,7 @@ export function SignUp() {
       <div className="w-full lg:w-3/5 flex flex-col items-center justify-center">
         <div className="text-center">
           <Typography variant="h2" className="font-bold mb-1">Join Us Today</Typography>
-          <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal text-surface-light-dark">Enter your email, username, name and password to register.</Typography>
+          <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal text-surface-light-dark">Enter your email and password to register.</Typography>
         </div>
         <form className="mt-2 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2" onSubmit={handleSignup}>
           <div className="mb-1 flex flex-col gap-6">
@@ -119,7 +96,7 @@ export function SignUp() {
               onChange={handleChange}
             />
           </div>
-          <div className="mb-1 flex flex-col gap-6">
+          {/* <div className="mb-1 flex flex-col gap-6">
             <Typography variant="small" color="blue-gray" className="-mb-3 font-medium text-surface-light">
               Your username
             </Typography>
@@ -148,7 +125,7 @@ export function SignUp() {
               }}
               onChange={handleChange}
             />
-          </div>
+          </div> */}
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="small" color="blue-gray" className="-mb-3 font-medium text-surface-light">
               Your password
