@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Popover } from '@mui/material';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4, v4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
 const TreeNode = ({ data, root = false, next = false }) => {
+    const navigate = useNavigate();
     const [isVisible, setIsVisible] = useState(false);
     const [isVisible2, setIsVisible2] = useState(false);
     const [popoverContent, setPopoverContent] = useState("");
@@ -16,7 +18,7 @@ const TreeNode = ({ data, root = false, next = false }) => {
         setPopoverContent(content);
         setIsVisible2(true);
     };
-    
+
 
     const handlePopoverClose = () => {
         setIsVisible(false);
@@ -29,13 +31,14 @@ const TreeNode = ({ data, root = false, next = false }) => {
                 <div className='flex flex-col me-2'>
                     <div className='vertical-line' hidden={root} />
                     <span
+                        onClick={() => navigate(`/dashboard/family-member/${v4()}`)}
                         onMouseEnter={() => handlePopoverOpen(data.name)}
                         onMouseLeave={handlePopoverClose}
                         className={`${root && 'background-image-filter'}`}
                         style={{
                             borderRadius: root ? '1.5rem' : '100%',
                             border: root ? 'none' : '1px solid #ccc;',
-                            backgroundImage: root ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../img/heart.png')`: `url('../img/${data.img1}.webp')`,
+                            backgroundImage: root ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../img/heart.png')` : `url('../img/${data.img1}.webp')`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             height: '40px',
@@ -54,13 +57,15 @@ const TreeNode = ({ data, root = false, next = false }) => {
                     <div className='vertical-line' hidden={data.children.length === 0} />
                 </div>
 
-                
-
                 {data.partner && (
                     <div className='flex flex-col'>
                         <div className='vertical-line opacity-0'></div>
-                        <span onMouseEnter={() => handlePopoverOpen2(data.partner)} onMouseLeave={handlePopoverClose}
-                            style={{ borderRadius: '100%', backgroundImage: `url('../img/${data.img2}.webp')`, backgroundSize: 'cover', backgroundPosition: 'center', height: '40px', width: '40px' }}>
+                        <span
+                            onClick={() => navigate(`/dashboard/family-member/${v4()}`)}
+                            onMouseEnter={() => handlePopoverOpen2(data.partner)}
+                            onMouseLeave={handlePopoverClose}
+                            style={{ borderRadius: '100%', backgroundImage: `url('../img/${data.img2}.webp')`, backgroundSize: 'cover', backgroundPosition: 'center', height: '40px', width: '40px' }}
+                        >
                             <></>
                         </span>
                         {isVisible2 && (
