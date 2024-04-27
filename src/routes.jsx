@@ -13,6 +13,7 @@ import Timeline from "./pages/timeline/Timeline";
 import Capsule from "./pages/capsule/Capsule";
 import UploadPhoto from "./pages/uploadPhotos/UploadPhoto";
 import SendGift from "./pages/sendGift/SendGift";
+import { Family } from "./pages/family/Family";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -56,7 +57,11 @@ export const routes = [
         element: <SendGift />,
       },
 
-
+      {
+        name: "Family",
+        path: "/family",
+        element: <Family />,
+      }
     ],
   },
   {

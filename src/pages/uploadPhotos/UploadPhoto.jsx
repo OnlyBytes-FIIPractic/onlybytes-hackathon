@@ -22,7 +22,7 @@ const UploadPhoto = () => {
     };
 
     const handleDateChange = (event) => {
-        setdate(event.target.value);
+         
     };
 
     const handleDescriptionChange = (event) => {
