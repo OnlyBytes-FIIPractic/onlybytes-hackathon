@@ -15,6 +15,7 @@ import Shop from "./pages/shop/Shop";
 import UploadPhoto from "./pages/uploadPhotos/UploadPhoto";
 import SendGift from "./pages/sendGift/SendGift";
 import { Family } from "./pages/family/Family";
+import Plan from "./pages/pricing/Plan";
 
 
 const icon = {
@@ -61,6 +62,11 @@ export const routes = [
         name: "Shop",
         path: "/shop",
         element: <Shop />,
+      },
+      {
+        name: "Plan",
+        path: "/plan",
+        element: <Plan />,
       }
 
 
