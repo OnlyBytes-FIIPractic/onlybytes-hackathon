@@ -50,6 +50,11 @@ export const routes = [
         name: "Family",
         path: "/family",
         element: <Family />,
+      },
+      {
+        name: "Shop",
+        path: "/shop",
+        element: <Shop />,
       }
 
 
