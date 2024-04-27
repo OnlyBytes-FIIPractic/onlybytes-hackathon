@@ -12,60 +12,60 @@ export function Family() {
         name: "My Family",
         children: [
             {
-                name: "Father",
+                name: "Vasile Onlybytes",
                 img1: "man3",
-                partner: "Mother",
+                partner: "Maria Onlybytes",
                 img2: "woman3",
                 children: [
                     {
-                        name: "Child 1",
+                        name: "Georgiana Onlybytes",
                         img1: "woman1",
-                        partner: "Child 1's partner",
+                        partner: "Mihai Onlybytes",
                         img2: "man1",
                         children: [
                             {
-                                name: "Grandchild 2",
+                                name: "Mihai Jr. Onlybytes",
                                 img1: "boy",
                                 children: []
                             }
                         ]
                     },
                     {
-                        name: "Child 2",
+                        name: "Andreea Onlybytes",
                         img1: "woman2",
-                        partner: "Child 2's partner",
+                        partner: "Ionut Onlybytes",
                         img2: "man2",
                         children: []
                     }
                 ],
             },
             {
-                name: "Uncle",
+                name: "Marc Onlybytes",
                 img1: "woman5",
-                partner: "Aunt",
+                partner: "Alexandra Onlybytes",
                 img2: "woman6",
                 children: [
                     {
-                        name: "Child 3",
+                        name: "Marian Onlybytes",
                         img1: "man12",
-                        partner: "Child 3's partner",
+                        partner: "Carla Onlybytes",
                         img2: "woman11",
                         children: []
                     },
                     {
-                        name: "Child 4",
+                        name: "Gabriela Onlybytes",
                         img1: "woman12",
                         children: []
                     },
                     {
-                        name: "Child 4",
+                        name: "Vitalie Onlybytes",
                         img1: "man21",
-                        partner: "Child 4's partner",
+                        partner: "Viorica Onlybytes",
                         img2: "woman21",
                         children: [{
-                            name: "Child 4",
+                            name: "George Onlybytes",
                             img1: "young1",
-                            partner: "Child 4's partner",
+                            partner: "Ana Onlybytes",
                             img2: "young2",
                             children: []
                         }
@@ -77,8 +77,8 @@ export function Family() {
     };
 
     return (
-        <div className="min-h-screen bg-surface-darkest">
-            <div className="p-4 xl:ml-100">
+        <div className="bg-surface-darkest">
+            <div className="p-4 xl:ml-100 me-5">
                 <Routes>
                     {routes.map(
                         ({ layout, pages }) =>
@@ -88,7 +88,8 @@ export function Family() {
                             ))
                     )}
                 </Routes>
-                <div className="p-4 ms-10">
+                <div className="p-10 ms-10 shadow rounded bg-surface">
+                    <h1 className="text-2xl font-bold text-secondary">Family Tree</h1>
                     <Tree root={mockTree} />
                 </div>
             </div>
