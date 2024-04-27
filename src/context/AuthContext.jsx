@@ -60,7 +60,8 @@ export const AuthContextProvider = ({ children }) => {
     setUser({
       uid: firebaseUser.uid,
       email: firebaseUser.email,
-      name: userData.name
+      name: userData.name,
+      birthday: userData.birthday,
     });
   };
 
