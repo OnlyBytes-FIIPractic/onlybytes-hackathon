@@ -50,7 +50,7 @@ export const routes = [
         element: <Capsule />,
       },
       {
-        name: "Family",
+        name: "Tree",
         path: "/family",
         element: <Family />,
       },

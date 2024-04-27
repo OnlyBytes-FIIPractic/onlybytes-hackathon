@@ -38,7 +38,7 @@ const TreeNode = ({ data, root = false, next = false }) => {
                         style={{
                             borderRadius: root ? '1.5rem' : '100%',
                             border: root ? 'none' : '1px solid #ccc;',
-                            backgroundImage: root ? `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../img/heart.png')` : `url('../img/${data.img1}.webp')`,
+                            backgroundImage: root ? `url('../img/heart.png')` : `url('../img/${data.img1}.webp')`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             height: '40px',
