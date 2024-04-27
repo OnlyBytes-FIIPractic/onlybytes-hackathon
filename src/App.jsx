@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./context/ProtectedRoute";
+import UploadPhoto from "./pages/uploadPhotos/UploadPhoto";
 
 function App() {
   return (
@@ -13,6 +14,11 @@ function App() {
         <Route path="/dashboard/*" element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>} />
+          
+        <Route path="/addMemory/*" element={
+          <ProtectedRoute>
+            <UploadPhoto />
           </ProtectedRoute>} />
         <Route path="/auth/*" element={<Auth />} />
         <Route path="*" element={<Navigate to="/dashboard/home" replace />} />
