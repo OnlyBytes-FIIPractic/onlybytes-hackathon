@@ -21,8 +21,6 @@ export function SignUp() {
   });
   const { createUser } = UserAuth();
 
-  
-
   const validatePassword = (password) => {
     if(password.length < 7){
       toast.error("Password must be at least 7 characters long");

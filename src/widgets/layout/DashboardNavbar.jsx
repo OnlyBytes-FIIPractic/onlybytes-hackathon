@@ -29,10 +29,11 @@ export function DashboardNavbar() {
   const { openSidenav } = controller;
   const { pathname } = useLocation();
   const [layout, page] = pathname.split("/").filter((el) => el !== "");
+
   return (
     <Navbar
       color={"transparent"}
-      className={"rounded-xl  transition-all px-0 py-1"}
+      className={`rounded-xl shadow-md ease-in-out px-5 py-1`}
       fullWidth
     >
       <div className="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
@@ -61,7 +62,7 @@ export function DashboardNavbar() {
             variant="text"
             color="blue-gray"
             className="grid xl:hidden"
-            onClick={() => setOpenSidenav(dispatch, !openSidenav)}
+            onClick={() => setOpenSidenav(!openSidenav)} // Ensure the openSidenav state and setOpenSidenav function are correctly implemented
           >
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
           </IconButton>
@@ -69,9 +70,9 @@ export function DashboardNavbar() {
             <Button
               variant="text"
               color="blue-gray"
-              className="hidden items-center gap-1  text-primary px-4 xl:flex normal-case"
+              className="hidden items-center gap-1 text-primary px-4 xl:flex normal-case"
             >
-              <UserCircleIcon className="h-5 w-5 text-primary"/>
+              <UserCircleIcon className="h-5 w-5 text-primary" />
             </Button>
             <IconButton
               variant="text"
@@ -81,8 +82,6 @@ export function DashboardNavbar() {
               <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
             </IconButton>
           </Link>
-
-          
         </div>
       </div>
     </Navbar>
