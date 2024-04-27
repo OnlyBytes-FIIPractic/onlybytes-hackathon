@@ -9,13 +9,13 @@ export function Dashboard() {
 
   return (
     <div className="min-h-screen bg-surface-darkest">
-        {/* <Sidenav
+      {/* <Sidenav
             brandName={"Ergo"}
             routes={routes}
             brandImg={"/img/logo.png"}
         /> */}
       <div className="p-4 xl:ml-100">
-        <DashboardNavbar />
+        <DashboardNavbar routes={routes} />
         <Routes>
           {routes.map(
             ({ layout, pages }) =>

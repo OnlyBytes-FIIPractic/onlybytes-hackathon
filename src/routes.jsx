@@ -21,24 +21,18 @@ export const routes = [
     pages: [
       {
         icon: <HomeIcon {...icon} />,
-        name: "dashboard",
+        name: "Home",
         path: "/home",
         element: <Home />,
       },
       {
         icon: <UserCircleIcon {...icon} />,
-        name: "profile",
+        name: "Profile",
         path: "/profile",
         element: <Profile />,
       },
       {
-        name: "project",
-        path: "/project/:projectId",
-        dynamic: true,
-        element: <ProjectDetails />,
-      },
-      {
-        name: "timeline",
+        name: "Timeline",
         path: "/timeline",
         element: <Timeline />,
       }

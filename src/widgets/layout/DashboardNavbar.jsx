@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, Route, Routes } from "react-router-dom";
 import {
   Navbar,
   Typography,
@@ -21,23 +21,24 @@ import {
   useMaterialTailwindController,
   setOpenSidenav,
 } from "@/context";
-import api from "@/services/api";
 import { toast } from "react-toastify";
 
-export function DashboardNavbar() {
+
+export function DashboardNavbar({ routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
   const { openSidenav } = controller;
   const { pathname } = useLocation();
   const [layout, page] = pathname.split("/").filter((el) => el !== "");
 
+
   return (
     <Navbar
       color={"transparent"}
-      className={`rounded-xl shadow shadow-md ease-in-out px-5 py-1`}
-      style={{boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05)"}}
+      className={`rounded-xl shadow-md ease-in-out px-5 py-1 bg-primary`}
+      style={{ boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05)" }}
       fullWidth
     >
-      <div className="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
+      <div className="flex items-center w-full justify-between">
         <div className="capitalize text-surface-light">
           <Breadcrumbs
             className={"bg-transparent p-0 transition-all"}
@@ -45,27 +46,39 @@ export function DashboardNavbar() {
             <Link to={`/${layout}`}>
               <Typography
                 variant="small"
-                className="font-normal opacity-60 transition-all text-primary hover:opacity-100 hover:text-primary"
+                className="font-normal opacity-60 transition-all text-gray-300 hover:opacity-100 hover:text-white"
               >
                 {layout}
               </Typography>
             </Link>
             <Typography
               variant="small"
-              className="font-normal text-surface-light "
+              className="font-normal text-white "
             >
               {page}
             </Typography>
           </Breadcrumbs>
         </div>
-        <div className="flex items-center">
+        <div className="flex items-center md:w-full">
+          <div className="md:flex gap-10 mx-auto hidden">
+            {routes.map(
+              ({ layout, pages }) =>
+                layout === "dashboard" &&
+                pages.map(({ path, name, element, index }) => (
+                  <Link to={`/dashboard${path}`} key={index} >
+                    <p className="text-white hover:text-yellow-700">{name}</p>
+                  </Link>
+                ))
+            )}
+          </div>
+
           <IconButton
             variant="text"
             color="blue-gray"
-            className="grid xl:hidden"
-            onClick={() => setOpenSidenav(!openSidenav)} // Ensure the openSidenav state and setOpenSidenav function are correctly implemented
+            className="grid md:hidden "
+            onClick={() => setOpenSidenav(!openSidenav)}
           >
-            <Bars3Icon strokeWidth={3} className="h-6 w-6 text-blue-gray-500" />
+            <Bars3Icon strokeWidth={3} className="h-6 w-6 text-white" />
           </IconButton>
           <Link to="/dashboard/profile">
             <Button
@@ -73,19 +86,19 @@ export function DashboardNavbar() {
               color="blue-gray"
               className="hidden items-center gap-1 text-primary px-4 xl:flex normal-case"
             >
-              <UserCircleIcon className="h-5 w-5 text-primary" />
+              <UserCircleIcon className="h-5 w-5 text-white" />
             </Button>
             <IconButton
               variant="text"
               color="blue-gray"
               className="grid xl:hidden"
             >
-              <UserCircleIcon className="h-5 w-5 text-blue-gray-500" />
+              <UserCircleIcon className="h-5 w-5 text-white" />
             </IconButton>
           </Link>
         </div>
       </div>
-    </Navbar>
+    </Navbar >
   );
 }
 
