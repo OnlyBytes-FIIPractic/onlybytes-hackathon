@@ -9,21 +9,8 @@ import {
     doc,
   } from "firebase/firestore";
   import { ref, uploadBytes } from "firebase/storage";
-import firebase from 'firebase/app';
  import { getStorage } from 'firebase/storage';
 
- const firebaseConfig = {
-    apiKey: "AIzaSyAT_sisQpKdbvxVAA0aOqGR4tqLygBD5D8",
-    authDomain: "onlybytes-hacakthon.firebaseapp.com",
-    projectId: "onlybytes-hacakthon",
-    storageBucket: "onlybytes-hacakthon.appspot.com",
-    messagingSenderId: "638024607719",
-    appId: "1:638024607719:web:f19ec514421f1215257f42",
-    measurementId: "G-RKPC7HL874"
-  };
-  
-  const firebaseApp = initializeApp(firebaseConfig);
-  const storage = getStorage(firebaseApp);
   
   const SlideshowGenerator = () => {
       const [videoUrl, setVideoUrl] = useState('');
@@ -32,7 +19,7 @@ import firebase from 'firebase/app';
       const generateSlideshow = async () => {
           try {
               const userId = "yTIgtK5HrkPTCEsAQVlmwZnjSQv2";
-              const db = firebaseApp.firestore();
+              const db = app.firestore();
               const userRef = collection(db, 'users', userId);
               const photosSnapshot = await getDocs(userRef);
               const photoUrls = photosSnapshot.docs.map(doc => doc.data().url);

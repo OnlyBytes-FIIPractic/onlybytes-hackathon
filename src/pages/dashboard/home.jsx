@@ -26,7 +26,6 @@ import {
   ordersOverviewData,
 } from "@/data";
 import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
-import SlideshowGenerator from "./slideshow";
 
 export function Home() {
   return (
@@ -205,7 +204,6 @@ export function Home() {
             <Typography variant="h6" className="mb-2 text-surface-light">
               Some Card
             </Typography>
-            <SlideshowGenerator/>
           </CardHeader>
           <CardBody className="pt-0">
             <>
