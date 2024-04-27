@@ -11,6 +11,7 @@ import ProjectDetails from "./pages/projectOverview/ProjectDetails";
 import SendResetCode from "./pages/auth/SendResetCode";
 import Timeline from "./pages/timeline/Timeline";
 import Capsule from "./pages/capsule/Capsule";
+import Shop from "./pages/shop/Shop";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -41,6 +42,11 @@ export const routes = [
         name: "Capsule",
         path: "/capsule",
         element: <Capsule />,
+      },
+      {
+        name: "Shop",
+        path: "/shop",
+        element: <Shop />,
       }
 
 
