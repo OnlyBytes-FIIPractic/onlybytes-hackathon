@@ -1,5 +1,5 @@
-import {collection, getDocs, query, where} from "firebase/firestore";
-import {db} from "./firebase";
+import { collection, getDocs, query, where, getDoc } from "firebase/firestore";
+import { db } from "./firebase";
 
 export const getUseridByEmail = async (email) => {
   const user = await getDocs(query(collection(db, "users"), where("email", "==", email)));
@@ -25,3 +25,9 @@ export const getFamilyByUserId = async (userId) => {
     return null;
   }
 }
+
+export const getPhotosByUserId = async (userId) => {
+  const user = await getDocs(query(collection(db, "users", userId, "photos")));
+  return user.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+}
+

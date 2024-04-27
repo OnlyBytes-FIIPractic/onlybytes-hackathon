@@ -15,6 +15,9 @@ import UploadPhoto from "./pages/uploadPhotos/UploadPhoto";
 import SendGift from "./pages/sendGift/SendGift";
 import { Family } from "./pages/family/Family";
 import BirthdayCapsule from "./pages/capsule/BirthdayCapsule";
+import Plan from "./pages/pricing/Plan";
+import { FamilyMember } from "./pages/family/FamilyMember";
+import { element } from "prop-types";
 
 
 const icon = {
@@ -66,9 +69,21 @@ export const routes = [
         name: "Shop",
         path: "/shop",
         element: <Shop />,
+      },
+      {
+        name: "Plan",
+        path: "/plan",
+        element: <Plan />,
+
+      },
+      {
+        path: "/family-member/:id",
+        element: <FamilyMember />,
+      },
+      {
+        element: <SendGift />,
+        path: "/send-gift",
       }
-
-
     ],
   },
   {

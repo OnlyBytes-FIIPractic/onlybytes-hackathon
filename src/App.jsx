@@ -6,12 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./context/ProtectedRoute";
 import UploadPhoto from "./pages/uploadPhotos/UploadPhoto";
-import BdayTrigger from "./services/BdayTrigger";
+
 
 function App() {
   return (
     <AuthContextProvider>
-      <BdayTrigger />
+  
       <Routes>
         <Route path="/dashboard/*" element={
           <ProtectedRoute>

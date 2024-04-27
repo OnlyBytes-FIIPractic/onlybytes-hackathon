@@ -8,6 +8,7 @@ import {
   Dialog,
 } from "@material-tailwind/react";
 import {
+  CheckIcon,
   PencilIcon,
 } from "@heroicons/react/24/solid";
 import { ProfileInfoCard } from "@/widgets/cards";
@@ -90,16 +91,14 @@ export function Profile() {
                 ),
               }}
               action={
-                <Tooltip content="Edit Profile">
-                  <PencilIcon className="h-4 w-4 cursor-pointer text-surface-mid-dark"
-                              onClick={() => {
-                                if (isInEditMode) {
-                                  onSave();
-                                } else {
-                                  setIsInEditMode(true);
-                                }
-                              }}/>
-                </Tooltip>
+                isInEditMode ? <Tooltip content="Save Profile">
+                    <CheckIcon className="h-4 w-4 cursor-pointer accent-green-800"
+                               onClick={onSave}/>
+                  </Tooltip>
+                  : <Tooltip content="Edit Profile">
+                    <PencilIcon className="h-4 w-4 cursor-pointer text-surface-mid-dark"
+                                onClick={() => setIsInEditMode(true)}/>
+                  </Tooltip>
               }
             />
           </div>

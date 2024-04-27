@@ -85,15 +85,16 @@
 /* simple changing background image color effect */
 @keyframes backgroundImageFilterChange{
   0% {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/heart.png');
+    transform: scale(1.0);
   }
   33% {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../img/heart.png');
+    transform: scale(1.2);
   }
   66% {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/heart.png');
+    transform: scale(1.0);
   }
   100% {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../img/heart.png');
+    transform: scale(1.1);
   }
 }
+
