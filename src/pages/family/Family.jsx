@@ -1,15 +1,29 @@
 import { Routes, Route } from "react-router-dom";
-import {
-    Sidenav,
-    DashboardNavbar
-} from "@/widgets/layout";
 import routes from "@/routes";
 import Tree from "./Tree";
+import {UserAuth} from "@/context/AuthContext.jsx";
+import {useEffect, useState} from "react";
+import {getFamilyByUserId} from "@/configs/firebaseFunctions.js";
+import CreateFamily from "@/pages/createFamily/CreateFamily.jsx";
+import {Spinner} from "@material-tailwind/react";
 
 export function Family() {
+    const { user } = UserAuth();
+    const [family, setFamily] = useState(null);
+
+    const fetchFamily = async () => {
+        if(user.uid == null) return;
+        const fetchedFamily = await getFamilyByUserId(user.uid);
+        console.log(fetchedFamily)
+        setFamily(fetchedFamily);
+    };
+
+    useEffect(() => {
+        fetchFamily();
+    }, [user]);
 
     const mockTree = {
-        name: "My Family",
+        name: family?.name || "My Family",
         children: [
             {
                 name: "Vasile Onlybytes",
@@ -75,6 +89,12 @@ export function Family() {
             }
         ]
     };
+
+    if(!user.uid) return <Spinner />
+
+    if (!family) {
+        return <CreateFamily fetchFamily={fetchFamily}/>;
+    }
 
     return (
         <div className="bg-surface-darkest">

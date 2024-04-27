@@ -11,10 +11,10 @@ import {
   PencilIcon,
 } from "@heroicons/react/24/solid";
 import { ProfileInfoCard } from "@/widgets/cards";
-import {useUser} from "@/context/LoginRequired.jsx";
 import {Link} from "react-router-dom";
 import { UserAuth } from "@/context/AuthContext";
 import {DialogActions, DialogTitle} from "@mui/material";
+import AddUserToFamily from "@/pages/createFamily/CreateFamily.jsx";
 
 
 export function Profile() {
@@ -52,6 +52,7 @@ export function Profile() {
               details={{
                 mobile: "(44) 123 1234 123",
                 email: user?.email || "",
+                birthday: "January 24, 1990",
                 // location: "USA",
                 // social: (
                 //   <div className="flex items-center gap-4">
