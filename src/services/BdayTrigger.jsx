@@ -10,7 +10,6 @@ const BdayTrigger = () => {
 
     useEffect(() => {
 
-        const family = getFamilyByUserId(user.uid);
     
         const checkBirthday = async () => {
             
