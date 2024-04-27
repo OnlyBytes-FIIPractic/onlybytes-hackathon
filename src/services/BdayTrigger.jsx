@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { UserAuth } from '../context/AuthContext';
 import { getFamilyByUserId } from '@/configs/firebaseFunctions';
 import { db } from '../configs/firebase'
-import { collection, getDocs} from "firebase/firestore";
+import { collection, getDocs, doc, addDoc} from "firebase/firestore";
 
 const BdayTrigger = () => {
 
@@ -18,7 +18,14 @@ const BdayTrigger = () => {
             const threeDaysLater = new Date(today);
             threeDaysLater.setDate(threeDaysLater.getDate() + 3);
 
-
+            // user.birthday is a string, convert it to a Date object
+            const birthday = new Date(user.birthday);
+            if (birthday.getDate() === threeDaysLater.getDate() && birthday.getMonth() === threeDaysLater.getMonth()) {
+                console.log('User birthday is in 3 days!');
+            } else {
+                console.log('User birthday is not in 3 days');
+                return;
+            }
             const currentYear = new Date().getFullYear();
 
             const bdayCapsulesRef = collection(db, `users/${user.uid}/bdayCapsules`);
@@ -35,59 +42,24 @@ const BdayTrigger = () => {
                     return;
                 }
             } else {
+
+                const capsuleData = {
+                    gifts : {},
+                    photos : {},
+                    year : currentYear.toString(),
+                }
+
                 console.log('No birthday capsule found for this user');
+                const bdayCapsuleRef = doc(collection(db, `users/${user.uid}/bdayCapsules`));
                 
+               addDoc(bdayCapsulesRef, capsuleData)
+    .           then((docRef) => {
+                    console.log('Capsule details stored successfully with ID:', docRef.id);
+                })
+                .catch((error) => {
+                    console.error('Error storing capsule details:', error);
+                });
             }
-                        
-            // // Check if the collection exists, create it if not
-            // const photosDoc = doc(db, `users/${user.uid}`);
-            // setDoc(photosDoc, {}, { merge: true }) // Using merge: true to avoid overwriting existing data
-
-            // // Add photo document to the collection
-            // setDoc(doc(photosRef), photoData)
-            //     .then(() => {
-            //         console.log('Photo details stored successfully!');
-            //         // Clear form fields after successful upload
-            //         setPhotoUpload(null);
-            //         setdate('');
-            //         setDescription('');
-            //         setLocation('');
-            //     })
-            //     .catch((error) => {
-            //         console.error('Error storing photo details:', error);
-            //     });
-       
-
-            // // If the reminder has not been triggered, proceed with the reminder logic
-          
-            // // Check if the current user's birthday is in 3 days
-            // if (
-            //     currentUser &&
-            //     currentUser.birthday &&
-            //     new Date(currentUser.birthday).getDate() === threeDaysLater.getDate() &&
-            //     new Date(currentUser.birthday).getMonth() === threeDaysLater.getMonth()
-            // ) {
-            //     try {
-            //         // Create a time capsule document in the database
-            //         const timeCapsuleRef = await db.collection('timeCapsules').add({
-            //             userId: currentUser.uid,
-            //             birthday: currentUser.birthday,
-            //             photos: [] // Placeholder for photos
-            //         });
-
-            //         // Filter all photos from this year and store them in the time capsule document
-            //         const photosFromThisYear = await db.collection('photos').where('userId', '==', currentUser.uid).where('uploadDate', '>=', new Date(new Date().getFullYear(), 0, 1)).get();
-            //         const photoUpdates = photosFromThisYear.docs.map((doc) => doc.ref.update({ timeCapsuleId: timeCapsuleRef.id }));
-
-            //         // Send notifications to family members about the upcoming birthday
-            //         // Add your notification logic here
-
-            //         // Update the reminder flag to indicate that it has been triggered
-            //         await reminderRef.set({ triggered: true });
-            //     } catch (error) {
-            //         console.error('Error creating time capsule:', error);
-            //     }
-            // }
         };
 
         checkBirthday();
