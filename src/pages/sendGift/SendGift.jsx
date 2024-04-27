@@ -21,8 +21,13 @@ const SendGift = () => {
         if (sendMoney) {
             console.log('Amount:', amount);
         }
-        // You can send this data to the server or handle it in any other way
-        // For example, you can upload the photo to a storage service like Firebase Storage
+        
+        // Reset the form
+        setMessage('');
+        setPhoto(null);
+        setAmount('50.00');
+        setSendMoney(false);
+    
     };
 
     return (
