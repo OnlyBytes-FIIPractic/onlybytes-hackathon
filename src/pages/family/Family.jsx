@@ -67,7 +67,6 @@ export function Family() {
     return (
         <div className="min-h-screen bg-surface-darkest">
             <div className="p-4 xl:ml-100">
-                <DashboardNavbar />
                 <Routes>
                     {routes.map(
                         ({ layout, pages }) =>
