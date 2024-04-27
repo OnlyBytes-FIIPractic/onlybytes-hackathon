@@ -92,11 +92,11 @@ const UploadPhoto = () => {
                 {/* Wrap the ImageIcon inside a label */}
                 <label htmlFor="file-upload" className="cursor-pointer">
                     <div className="border border-gray-300 rounded-lg p-4">
-                        <ImageIcon className="w-8 h-8 text-gray-600" /> {/* ImageIcon */}
+                        <ImageIcon className="w-8 h-8 text-primary" /> {/* ImageIcon */}
                     </div>
                      {photoUpload && (
-                <p className="text-gray-600">Selected Photo: {photoUpload.name}</p>
-            )}
+                <p className="text-primary">Selected Photo: {photoUpload.name}</p>
+            )}  
                 </label>
                 {/* Hidden input for file upload */}
                 <input id="file-upload" type="file" className="hidden" onChange={handleFileChange} />
@@ -108,7 +108,7 @@ const UploadPhoto = () => {
             <textarea className="w-full h-20 py-2 px-4 rounded-lg border border-gray-300 mb-4 resize-none" value={description} onChange={handleDescriptionChange} /> {/* Fixed size textarea */}
             <label className="block mb-2">Location:</label>
             <input type="text" className="w-full py-2 px-4 rounded-lg border border-gray-300 mb-4" value={location} onChange={handleLocationChange} />
-            <button className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300" onClick={uploadImage}>Upload</button>
+            <button className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300" onClick={uploadImage}>Upload</button>
         </div>
     </div>
 );
