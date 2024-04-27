@@ -7,7 +7,6 @@ import {
 } from "@heroicons/react/24/solid";
 import { Home, Profile } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
-import ProjectDetails from "./pages/projectOverview/ProjectDetails";
 import SendResetCode from "./pages/auth/SendResetCode";
 import Timeline from "./pages/timeline/Timeline";
 import Capsule from "./pages/capsule/Capsule";
@@ -15,6 +14,7 @@ import Shop from "./pages/shop/Shop";
 import UploadPhoto from "./pages/uploadPhotos/UploadPhoto";
 import SendGift from "./pages/sendGift/SendGift";
 import { Family } from "./pages/family/Family";
+import BirthdayCapsule from "./pages/capsule/BirthdayCapsule";
 
 
 const icon = {
@@ -46,6 +46,11 @@ export const routes = [
         name: "Capsule",
         path: "/capsule",
         element: <Capsule />,
+      },
+      {
+        name: "BirthDayCapsule",
+        path: "/birthdaycapsule",
+        element: <BirthdayCapsule/>,
       },
       {
         name: "Family",
