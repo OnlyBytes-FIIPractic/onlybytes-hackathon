@@ -16,6 +16,7 @@ import UploadPhoto from "./pages/uploadPhotos/UploadPhoto";
 import SendGift from "./pages/sendGift/SendGift";
 import { Family } from "./pages/family/Family";
 
+
 const icon = {
   className: "w-5 h-5 text-inherit",
 };
@@ -50,6 +51,11 @@ export const routes = [
         name: "Family",
         path: "/family",
         element: <Family />,
+      },
+      {
+        name: "Add memory",
+        path: "/add-memory",
+        element: <UploadPhoto />,
       },
       {
         name: "Shop",
