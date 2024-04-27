@@ -25,4 +25,3 @@ export const getFamilyByUserId = async (userId) => {
     return null;
   }
 }
-
