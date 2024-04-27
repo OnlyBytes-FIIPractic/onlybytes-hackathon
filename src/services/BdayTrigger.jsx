@@ -14,17 +14,10 @@ const BdayTrigger = () => {
     
         const checkBirthday = async () => {
             
-            // get the users birthday
+            const today = new Date();
+            const threeDaysLater = new Date(today);
+            threeDaysLater.setDate(threeDaysLater.getDate() + 3);
 
-            const userBday = collection(db, `users/${user.uid}/birthday`);
-            const userBdaySnapshot = await getDocs(userBday);
-            if (!userBdaySnapshot.empty) {
-                const userBdayData = userBdaySnapshot.docs[0].data();
-                console.log('User birthday data:', userBdayData);
-            } else {
-                console.log('No birthday found for this user');
-            }
-           
 
             const currentYear = new Date().getFullYear();
 
@@ -66,10 +59,7 @@ const BdayTrigger = () => {
        
 
             // // If the reminder has not been triggered, proceed with the reminder logic
-            // const today = new Date();
-            // const threeDaysLater = new Date(today);
-            // threeDaysLater.setDate(threeDaysLater.getDate() + 3);
-
+          
             // // Check if the current user's birthday is in 3 days
             // if (
             //     currentUser &&

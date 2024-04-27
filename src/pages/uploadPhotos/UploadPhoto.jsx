@@ -13,7 +13,7 @@ const UploadPhoto = () => {
     const { user } = UserAuth();
     
     const [photoUpload, setPhotoUpload] = useState(null);
-    const [date, setdate] = useState('');
+    const [date, setDate] = useState('');
     const [description, setDescription] = useState('');
     const [location, setLocation] = useState('');
 
@@ -22,7 +22,7 @@ const UploadPhoto = () => {
     };
 
     const handleDateChange = (event) => {
-         
+         setDate(event.target.value);
     };
 
     const handleDescriptionChange = (event) => {
@@ -66,7 +66,7 @@ const UploadPhoto = () => {
                             console.log('Photo details stored successfully!');
                             // Clear form fields after successful upload
                             setPhotoUpload(null);
-                            setdate('');
+                            setDate('');
                             setDescription('');
                             setLocation('');
                         })
