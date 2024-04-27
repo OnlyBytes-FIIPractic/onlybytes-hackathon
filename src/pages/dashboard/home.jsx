@@ -27,6 +27,7 @@ import {
 } from "@/data";
 import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
 import UploadPhoto from "../uploadPhotos/UploadPhoto";
+import SlideshowGenerator from "./slideshow";
 
 export function Home() {
   return (
