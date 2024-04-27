@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import img from "../../../public/img/capsule_image.png"
 import {
-    Card,
+    Card, Button,
     Dialog,
+    DialogHeader,
     DialogBody,
+    DialogFooter,
 } from "@material-tailwind/react";
 import { IconButton, Typography } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
@@ -129,15 +131,18 @@ const Capsule = () => {
                     </img>
                 </Card>
             </div>
-            <Dialog className='w-[600px] h-[600px]' open={open} handler={handleOpen}>
+            <Dialog className='w-[600px] h-[700px]' open={open} handler={handleOpen}>
                 <DialogBody>
                     <img
-                        className='w-full h-[550px] object-fit '
+                        className='w-full h-[550px] object-fit'
                         src={currentImage}
                         alt="gallery"
                     />
                 </DialogBody>
-
+                <DialogFooter>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum in voluptatem enim obcaecati corrupti nisi libero soluta quaerat sapiente officia animi error rem, nemo officiis magnam sunt! Recusandae, soluta vel.</p>
+                    <p className='font-bold text-primary mt-4'>12.10.2025</p>
+                </DialogFooter>
             </Dialog>
         </>
     );
