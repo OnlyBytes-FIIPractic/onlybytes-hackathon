@@ -45,6 +45,11 @@ export const routes = [
         name: "Capsule",
         path: "/capsule",
         element: <Capsule />,
+      },
+      {
+        name: "Family",
+        path: "/family",
+        element: <Family />,
       }
 
 
