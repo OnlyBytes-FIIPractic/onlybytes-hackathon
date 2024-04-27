@@ -14,7 +14,7 @@ export function SignUp() {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     // username: '',
-    // name: '',
+    displayName: '',
     email: '',
     password: '',
     confirmPassword: ''
@@ -42,7 +42,7 @@ export function SignUp() {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    if(inputs.email === '' || inputs.password === '' || inputs.confirmPassword === ''){
+    if(inputs.displayName === '' || inputs.email === '' || inputs.password === '' || inputs.confirmPassword === ''){
       toast.error("Please fill all the fields");
       return;
     }
@@ -55,7 +55,7 @@ export function SignUp() {
       return;
     }
     try {
-      await createUser(inputs.email, inputs.password);
+      await createUser(inputs.displayName, inputs.email, inputs.password);
       toast.success('Account created successfully')
       navigate('/account')
     } catch (e) {
@@ -80,6 +80,21 @@ export function SignUp() {
         <form className="mt-2 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2" onSubmit={handleSignup}>
           <div className="mb-1 flex flex-col gap-6">
             <Typography variant="small" color="blue-gray" className="-mb-3 font-medium text-surface-light">
+              Your name
+            </Typography>
+            <Input
+              size="lg"
+              placeholder="Name"
+              name="displayName"
+              className="!border-surface-mid-dark text-surface-light focus:!border-secondary"
+              labelProps={{
+                className: "before:content-none after:content-none",
+              }}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-1 flex flex-col gap-6">
+            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium text-surface-light">
               Your email
             </Typography>
             <Input
@@ -102,21 +117,6 @@ export function SignUp() {
               size="lg"
               placeholder="Username"
               name="username"
-              className="!border-surface-mid-dark text-surface-light focus:!border-secondary"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="mb-1 flex flex-col gap-6">
-            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium text-surface-light">
-              Your name
-            </Typography>
-            <Input
-              size="lg"
-              placeholder="Name"
-              name="name"
               className="!border-surface-mid-dark text-surface-light focus:!border-secondary"
               labelProps={{
                 className: "before:content-none after:content-none",
