@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
-import img from "../../../public/img/capsule_image.png"
 import {
-    Card, Button,
+    Card,
     Dialog,
-    DialogHeader,
     DialogBody,
     DialogFooter,
 } from "@material-tailwind/react";
 import { IconButton, Typography } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
-import Example from './Example';
+import SlideshowGenerator from './Slideshow';
+import {UserAuth} from "@/context/AuthContext.jsx";
 
 const images = [
     "https://source.unsplash.com/ztpUS4N1xhY",
@@ -57,6 +56,7 @@ const Capsule = () => {
     const [active, setActive] = useState(1);
     const [open, setOpen] = useState(false);
     const [currentImage, setCurrentImage] = useState(images[0]);
+    const { user } = UserAuth();
 
     const handleOpen = (image) => {
         setCurrentImage(image);
@@ -64,7 +64,7 @@ const Capsule = () => {
     }
 
     const next = () => {
-        if (active === Math.ceil(images.length / 6)) return; // Assuming 6 images per page
+        if (active === Math.ceil(images.length / 6)) return;
         setActive(active + 1);
     };
 
@@ -119,16 +119,11 @@ const Capsule = () => {
                     <h1 className='italic mt-4 text-2xl'>Your memories are here!</h1>
                     <p className='italic mt-10'>We've kept our promise! Now, prepare to be enthralled by the treasure trove we've created just for you. Take a heartfelt journey through your life's most precious moments, shared with your beloved family. Each memory, a gem, waiting to be discovered and cherished once more. So you received:</p>
 
-                    <ul class="list-disc list-inside mt-6">
+                    <ul class="list-disc list-inside mt-8 mb-8">
                         <li class="font-semibold italic">Your photo album containing memories starting from the moment you started the capsule</li>
                         <li class="font-semibold italic">A video slideshow we made just for you</li>
                     </ul>
-                    <img
-                        src={images[3]}
-                        alt="gallery"
-                        className=' object-cover w-[25rem] mt-6 rounded-md'
-                    >
-                    </img>
+                    <SlideshowGenerator userId={user.uid}/>
                 </Card>
             </div>
             <Dialog className='w-[600px] h-[700px]' open={open} handler={handleOpen}>
