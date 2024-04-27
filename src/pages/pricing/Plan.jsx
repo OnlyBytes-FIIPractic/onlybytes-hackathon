@@ -1,6 +1,7 @@
 import React from 'react'
 import PlanCard from './PlanCard'
 import ContactPlan from './ContactPlan'
+import GiftAnimation from '../utils/GiftAnimation'
 const plans = [
     {
         name: 'Growth',
@@ -58,8 +59,6 @@ const Plan = () => {
                 <ContactPlan />
             </div>
         </div>
-
-
     )
 }
 
