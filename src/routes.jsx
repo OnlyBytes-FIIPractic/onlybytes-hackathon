@@ -10,6 +10,7 @@ import { SignIn, SignUp } from "@/pages/auth";
 import ProjectDetails from "./pages/projectOverview/ProjectDetails";
 import SendResetCode from "./pages/auth/SendResetCode";
 import Timeline from "./pages/timeline/Timeline";
+import Capsule from "./pages/capsule/Capsule";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -35,7 +36,14 @@ export const routes = [
         name: "Timeline",
         path: "/timeline",
         element: <Timeline />,
+      },
+      {
+        name: "Capsule",
+        path: "/capsule",
+        element: <Capsule />,
       }
+
+
     ],
   },
   {
