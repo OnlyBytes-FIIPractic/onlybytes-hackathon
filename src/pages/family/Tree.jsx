@@ -31,6 +31,7 @@ const TreeNode = ({ data, root = false, next = false }) => {
                 <div className='flex flex-col me-2'>
                     <div className='vertical-line' hidden={root} />
                     <span
+                        onClick={() => navigate(`/dashboard/family-member/${v4()}`)}
                         onMouseEnter={() => handlePopoverOpen(data.name)}
                         onMouseLeave={handlePopoverClose}
                         className={`${root && 'background-image-filter'}`}
