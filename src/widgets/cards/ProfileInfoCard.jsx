@@ -3,10 +3,11 @@ import {
   Card,
   CardHeader,
   CardBody,
-  Typography,
+  Typography, Input, Textarea,
 } from "@material-tailwind/react";
+import React from "react";
 
-export function ProfileInfoCard({ title, description, details, action }) {
+export function ProfileInfoCard({ title, description, details, action, isInEditMode, setBirthDate }) {
   return (
     <Card color="transparent" shadow={false}>
       <CardHeader
@@ -22,12 +23,16 @@ export function ProfileInfoCard({ title, description, details, action }) {
       </CardHeader>
       <CardBody className="p-0">
         {description && (
-          <Typography
-            variant="small"
-            className="font-normal text-surface-light"
-          >
-            {description}
-          </Typography>
+          <> {isInEditMode ? <Textarea
+            value={description}
+          /> : <Typography
+              variant="small"
+              className="font-normal text-surface-light"
+            >
+              {description}
+            </Typography>
+          }
+          </>
         )}
         {description && details ? (
           <hr className="my-8 border-surface-mid" />
@@ -35,21 +40,29 @@ export function ProfileInfoCard({ title, description, details, action }) {
         {details && (
           <ul className="flex flex-col gap-4 p-0">
             {Object.keys(details).map((el, key) => (
-              <li key={key} className="flex items-center gap-4">
+              <li key={key} className={`flex items-center gap-4`}>
                 <Typography
                   variant="small"
                   className="font-semibold capitalize text-surface-light"
                 >
                   {el}:
                 </Typography>
-                {typeof details[el] === "string" ? (
-                  <Typography
-                    variant="small"
-                    className="font-normal text-surface-mid-light"
-                  >
-                    {details[el]}
-                  </Typography>
-                ) : (
+                {typeof details[el] === "string" || details[el] == null ? (
+                  <>
+                    {!isInEditMode ? <Typography
+                      variant="small"
+                      className="font-normal text-surface-mid-light"
+                    >
+                      {details[el] || "N/A"}
+                    </Typography> : <>
+                      {el === "birthday" ? <>
+                          <Input type="date"
+                                 value={details[el]}
+                                 onChange={e => setBirthDate(e.target.value)}
+                                 placeholder="Select Date" />
+                        </> : <Input value={details[el]} onChange={() => {}}/>}
+                    </>}
+                  </>) : (
                   details[el]
                 )}
               </li>
