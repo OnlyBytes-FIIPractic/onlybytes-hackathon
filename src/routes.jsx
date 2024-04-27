@@ -56,6 +56,11 @@ export const routes = [
         name: "Add memory",
         path: "/add-memory",
         element: <UploadPhoto />,
+      },
+      {
+        name: "Shop",
+        path: "/shop",
+        element: <Shop />,
       }
 
 
