@@ -33,7 +33,8 @@ export function DashboardNavbar() {
   return (
     <Navbar
       color={"transparent"}
-      className={`rounded-xl shadow-md ease-in-out px-5 py-1`}
+      className={`rounded-xl shadow shadow-md ease-in-out px-5 py-1`}
+      style={{boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05)"}}
       fullWidth
     >
       <div className="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-center">
