@@ -15,7 +15,6 @@ function App() {
           <ProtectedRoute>
             <Dashboard />
           </ProtectedRoute>} />
-          
         <Route path="/addMemory/*" element={
           <ProtectedRoute>
             <UploadPhoto />

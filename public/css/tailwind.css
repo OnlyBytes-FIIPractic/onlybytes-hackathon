@@ -11,3 +11,69 @@
   background-color: '#1a1625';
   border-radius: 10px;
 }
+
+.tree {
+  display: flex;
+  justify-content: center;
+}
+
+.node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.node span {
+  display: inline-block;
+  background-color: #fff;
+  padding: 35px;
+  border: 1px solid #ccc;
+  border-radius: 100%;
+}
+
+.children {
+  display: flex;
+  justify-content: center;
+}
+
+.vertical-line {
+  border-left: 1px solid #ccc;
+  border-left-style: dashed;
+  height: 20px;
+  margin-left: 50%;
+}
+
+/* simple color moving effect for vertical line*/
+.vertical-line {
+  animation: colorchange 2s infinite;
+}
+
+@keyframes colorchange {
+  0% {
+    border-color: #ccc;
+  }
+  50% {
+    border-color: #a714c4;
+  }
+  100% {
+    border-color: #ccc;
+  }
+}
+
+.horizontal-line {
+  border-top: 1px solid #ccc;
+  border-top-style: dashed;
+}
+
+/* simple color moving effect for horizontal line*/
+
+.horizontal-line {
+  animation: colorchange 2s infinite;
+}
+
+.color-line{
+  animation: colorchange 2s infinite;
+  border-top: 1px solid #ccc;
+  border-top-style: dashed;
+}
