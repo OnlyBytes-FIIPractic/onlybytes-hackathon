@@ -1,60 +1,86 @@
 import { Routes, Route } from "react-router-dom";
-import {
-    Sidenav,
-    DashboardNavbar
-} from "@/widgets/layout";
 import routes from "@/routes";
 import Tree from "./Tree";
+import {UserAuth} from "@/context/AuthContext.jsx";
+import {useEffect, useState} from "react";
+import {getFamilyByUserId} from "@/configs/firebaseFunctions.js";
+import CreateFamily from "@/pages/createFamily/CreateFamily.jsx";
+import {Spinner} from "@material-tailwind/react";
 
 export function Family() {
+    const { user } = UserAuth();
+    const [family, setFamily] = useState(null);
+
+    const fetchFamily = async () => {
+        if(user.uid == null) return;
+        const fetchedFamily = await getFamilyByUserId(user.uid);
+        console.log(fetchedFamily)
+        setFamily(fetchedFamily);
+    };
+
+    useEffect(() => {
+        fetchFamily();
+    }, [user]);
 
     const mockTree = {
-        name: "My Family",
+        name: family?.name || "My Family",
         children: [
             {
-                name: "Father",
-                img1: "man1",
-                partner: "Mother",
-                img2: "woman1",
+                name: "Vasile Onlybytes",
+                img1: "man3",
+                partner: "Maria Onlybytes",
+                img2: "woman3",
                 children: [
                     {
-                        name: "Child 1",
-                        partner: "Child 1's partner",
+                        name: "Georgiana Onlybytes",
+                        img1: "woman1",
+                        partner: "Mihai Onlybytes",
+                        img2: "man1",
                         children: [
                             {
-                                name: "Grandchild 2",
+                                name: "Mihai Jr. Onlybytes",
+                                img1: "boy",
                                 children: []
                             }
                         ]
                     },
                     {
-                        name: "Child 2",
-                        partner: "Child 2's partner",
+                        name: "Andreea Onlybytes",
+                        img1: "woman2",
+                        partner: "Ionut Onlybytes",
+                        img2: "man2",
                         children: []
                     }
                 ],
             },
             {
-                name: "Uncle",
-                img1: "man2",
-                partner: "Aunt",
-                img2: "woman2",
+                name: "Marc Onlybytes",
+                img1: "woman5",
+                partner: "Alexandra Onlybytes",
+                img2: "woman6",
                 children: [
                     {
-                        name: "Child 3",
-                        partner: "Child 3's partner",
+                        name: "Marian Onlybytes",
+                        img1: "man12",
+                        partner: "Carla Onlybytes",
+                        img2: "woman11",
                         children: []
                     },
                     {
-                        name: "Child 4",
+                        name: "Gabriela Onlybytes",
+                        img1: "woman12",
                         children: []
                     },
                     {
-                        name: "Child 4",
-                        partner: "Child 4's partner",
+                        name: "Vitalie Onlybytes",
+                        img1: "man21",
+                        partner: "Viorica Onlybytes",
+                        img2: "woman21",
                         children: [{
-                            name: "Child 4",
-                            partner: "Child 4's partner",
+                            name: "George Onlybytes",
+                            img1: "young1",
+                            partner: "Ana Onlybytes",
+                            img2: "young2",
                             children: []
                         }
                         ]
@@ -64,9 +90,15 @@ export function Family() {
         ]
     };
 
+    if(!user.uid) return <Spinner />
+
+    if (!family) {
+        return <CreateFamily fetchFamily={fetchFamily}/>;
+    }
+
     return (
-        <div className="min-h-screen bg-surface-darkest">
-            <div className="p-4 xl:ml-100">
+        <div className="bg-surface-darkest">
+            <div className="p-4 xl:ml-100 me-5">
                 <Routes>
                     {routes.map(
                         ({ layout, pages }) =>
@@ -76,7 +108,8 @@ export function Family() {
                             ))
                     )}
                 </Routes>
-                <div className="p-4">
+                <div className="p-10 ms-10 shadow rounded bg-surface">
+                    <h1 className="text-2xl font-bold text-secondary">Family Tree</h1>
                     <Tree root={mockTree} />
                 </div>
             </div>

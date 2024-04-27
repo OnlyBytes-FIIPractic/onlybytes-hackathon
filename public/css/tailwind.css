@@ -38,7 +38,7 @@
 }
 
 .vertical-line {
-  border-left: 1px solid #ccc;
+  border-left: 1.75px solid #ccc;
   border-left-style: dashed;
   height: 20px;
   margin-left: 50%;
@@ -62,7 +62,7 @@
 }
 
 .horizontal-line {
-  border-top: 1px solid #ccc;
+  border-top: 2px solid #ccc;
   border-top-style: dashed;
 }
 
@@ -74,6 +74,26 @@
 
 .color-line{
   animation: colorchange 2s infinite;
-  border-top: 1px solid #ccc;
+  border-top: 1.75px solid #ccc;
   border-top-style: dashed;
+}
+
+.background-image-filter {
+  animation: backgroundImageFilterChange 2s infinite;
+}
+
+/* simple changing background image color effect */
+@keyframes backgroundImageFilterChange{
+  0% {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/heart.png');
+  }
+  33% {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../img/heart.png');
+  }
+  66% {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/heart.png');
+  }
+  100% {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('../img/heart.png');
+  }
 }

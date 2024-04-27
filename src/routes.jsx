@@ -11,6 +11,7 @@ import ProjectDetails from "./pages/projectOverview/ProjectDetails";
 import SendResetCode from "./pages/auth/SendResetCode";
 import Timeline from "./pages/timeline/Timeline";
 import Capsule from "./pages/capsule/Capsule";
+import Shop from "./pages/shop/Shop";
 import UploadPhoto from "./pages/uploadPhotos/UploadPhoto";
 import SendGift from "./pages/sendGift/SendGift";
 import { Family } from "./pages/family/Family";
@@ -46,22 +47,12 @@ export const routes = [
         element: <Capsule />,
       },
       {
-        name: "Add a memory",
-        path: "/upload-photo",
-        element: <UploadPhoto />,
-      },
-
-      {
-        name: "Send a gift",
-        path: "/send-gift",
-        element: <SendGift />,
-      },
-
-      {
         name: "Family",
         path: "/family",
         element: <Family />,
       }
+
+
     ],
   },
   {
