@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react'
 import { UserAuth } from '../context/AuthContext';
+import { getFamilyByUserId } from '@/configs/firebaseFunctions';
 
 const BdayTrigger = ({ currentUser }) => {
 
     const { user } = UserAuth();
 
     useEffect(() => {
+
+        const family = getFamilyByUserId(user.uid);
     
         const checkBirthday = async () => {
             // Check if the reminder has already been triggered for the current user
-            const reminderRef = db.collection('reminders').doc(currentUser.uid);
+            const reminderRef = db.collection(`families/`).doc(currentUser.uid);
             const reminderDoc = await reminderRef.get();
             if (reminderDoc.exists && reminderDoc.data().triggered) {
                 // If the reminder has already been triggered, do nothing
