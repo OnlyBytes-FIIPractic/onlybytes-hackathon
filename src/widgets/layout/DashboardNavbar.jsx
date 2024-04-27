@@ -39,32 +39,35 @@ export function DashboardNavbar({ routes }) {
       fullWidth
     >
       <div className="flex items-center w-full justify-between">
-        <div className="capitalize text-surface-light">
-          <Breadcrumbs
-            className={"bg-transparent p-0 transition-all"}
-          >
-            <Link to={`/${layout}`}>
-              <Typography
-                variant="small"
-                className="font-normal opacity-60 transition-all text-gray-300 hover:opacity-100 hover:text-white"
-              >
-                {layout}
-              </Typography>
-            </Link>
-            <Typography
-              variant="small"
-              className="font-normal text-white "
-            >
-              {page}
-            </Typography>
-          </Breadcrumbs>
-        </div>
+        {/*<div className="capitalize text-surface-light">*/}
+        {/*  <Breadcrumbs*/}
+        {/*    className={"bg-transparent p-0 transition-all"}*/}
+        {/*  >*/}
+        {/*    <Link to={`/${layout}`}>*/}
+        {/*      <Typography*/}
+        {/*        variant="small"*/}
+        {/*        className="font-normal opacity-60 transition-all text-gray-300 hover:opacity-100 hover:text-white"*/}
+        {/*      >*/}
+        {/*        {layout}*/}
+        {/*      </Typography>*/}
+        {/*    </Link>*/}
+        {/*    <Typography*/}
+        {/*      variant="small"*/}
+        {/*      className="font-normal text-white "*/}
+        {/*    >*/}
+        {/*      {page}*/}
+        {/*    </Typography>*/}
+        {/*  </Breadcrumbs>*/}
+        {/*</div>*/}
+        <Link to={`/dashboard/home`}>
+          <p className="text-white hover:text-yellow-700">Home</p>
+        </Link>
         <div className="flex items-center md:w-full">
           <div className="md:flex gap-10 mx-auto hidden">
             {routes.map(
               ({ layout, pages }) =>
                 layout === "dashboard" &&
-                pages.map(({ path, name, element, index }) => (
+                pages.map(({ path, name, element, index }) => name !== "Profile" && name !== "Home" && (
                   <Link to={`/dashboard${path}`} key={index} >
                     <p className="text-white hover:text-yellow-700">{name}</p>
                   </Link>
