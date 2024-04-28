@@ -3,6 +3,7 @@ import CapsuleCard from './CapsuleCard'
 import { Typography } from '@material-tailwind/react'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import NewCapsule from './NewCapsule';
 
 const capsulesArr = [
     {
@@ -94,6 +95,7 @@ const Timeline = ({ }) => {
             ))}
             <Circle />
             <p className='text-center text-primary font-bold'>2035</p>
+            <NewCapsule timeToCreate={"2035-01-01T00:00:00"} />
 
         </div>
     )
