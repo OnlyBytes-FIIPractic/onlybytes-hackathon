@@ -7,6 +7,7 @@ import { getFamilyByUserId } from "@/configs/firebaseFunctions.js";
 import CreateFamily from "@/pages/createFamily/CreateFamily.jsx";
 import { Button, Dialog, DialogBody, DialogFooter, DialogHeader, Input, Option, Select, Spinner } from "@material-tailwind/react";
 import SelectOption from "@material-tailwind/react/components/Select/SelectOption";
+import { AttachMoney } from "@mui/icons-material";
 
 export function Family() {
     const { user } = UserAuth();
@@ -147,6 +148,9 @@ export function Family() {
                             </div>
                         </DialogBody>
                         <DialogFooter>
+                            <div className="flex items-center justify-between text-primary text-lg me-3">
+                                <AttachMoney className="w-6 h-6 text-primary" /> <p className="mt-1">5.00</p>
+                            </div>
                             <Button className="shadow-md bg-secondary hover:bg-primary"
                                 ripple
                             >Add Member</Button>
