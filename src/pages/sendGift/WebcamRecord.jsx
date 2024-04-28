@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import Webcam from 'react-webcam';
-import { ref, uploadBytes } from 'firebase/storage';
+import React, { useState, useEffect } from 'react'
+import Webcam from "react-webcam";
+import { ref, uploadBytes } from "firebase/storage";
 import { storage } from '@/configs/firebase';
 
 const WebcamRecord = () => {
@@ -33,14 +33,20 @@ const WebcamRecord = () => {
     const handleStopCaptureClick = React.useCallback(() => {
         mediaRecorderRef.current.stop();
         setCapturing(false);
-    }, [mediaRecorderRef, setCapturing]);
+    }, [mediaRecorderRef, webcamRef, setCapturing]);
 
     const handleDownload = React.useCallback(async () => {
         if (recordedChunks.length) {
             try {
+                // Create a storage reference with the desired name for the video
                 const storageRef = ref(storage, "videos/video.webm");
+
+                // Upload the blob to Firebase Storage
                 await uploadBytes(storageRef, new Blob(recordedChunks, { type: "video/webm" }));
+
                 console.log("Video uploaded successfully!");
+
+                // Clear recordedChunks after successful upload
                 setRecordedChunks([]);
             } catch (error) {
                 console.error("Error uploading video:", error);
@@ -57,10 +63,10 @@ const WebcamRecord = () => {
                 <button className='p-2 bg-primary text-white rounded-lg mt-2 mb-2' onClick={handleStartCaptureClick}>Start Capture</button>
             )}
             {recordedChunks.length > 0 && (
-                <button onClick={handleDownload}>Download</button>
+                <button className='p-2 bg-primary text-white rounded-lg mt-2 mb-2 ml-2' onClick={handleDownload}>Upload</button>
             )}
         </div>
     );
 }
 
-export default WebcamRecord;
+export default WebcamRecord

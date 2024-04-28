@@ -5,11 +5,14 @@ import { UserAuth } from "@/context/AuthContext.jsx";
 import { useEffect, useState } from "react";
 import { getFamilyByUserId } from "@/configs/firebaseFunctions.js";
 import CreateFamily from "@/pages/createFamily/CreateFamily.jsx";
-import { Button, Spinner } from "@material-tailwind/react";
+import { Button, Dialog, DialogBody, DialogFooter, DialogHeader, Input, Option, Select, Spinner } from "@material-tailwind/react";
+import SelectOption from "@material-tailwind/react/components/Select/SelectOption";
+import { AttachMoney } from "@mui/icons-material";
 
 export function Family() {
     const { user } = UserAuth();
     const [family, setFamily] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     const fetchFamily = async () => {
         if (user.uid == null) return;
@@ -111,9 +114,48 @@ export function Family() {
                 <div className="p-10 ms-10 shadow rounded bg-surface">
                     <div className="w-full flex justify-between">
                         <h1 className="text-2xl font-bold text-secondary">Family Tree</h1>
-                        <Button color="purple">Add Member</Button>
+                        <Button
+                            color="purple"
+                            onClick={() => setShowModal(true)}
+                        >
+                            Add Member
+                        </Button>
                     </div>
                     <Tree root={mockTree} />
+                    <Dialog open={showModal}>
+                        <DialogHeader>
+                            <span>Add a New Member</span>
+                            <i className={"fas fa-xmark ml-auto cursor-pointer"} onClick={() => setShowModal(false)} />
+                        </DialogHeader>
+                        <DialogBody>
+                            <h3 className="text-xl mb-2">Member email</h3>
+                            <Input
+                                placeholder="Enter member email"
+                                className="mb-4"
+                            />
+                            {/* select one parent */}
+                            <h3 className="text-xl mt-4 mb-2">Select parent</h3>
+                            <div className="flex items-center mb-2">
+                                <Select
+                                    fullWidth
+                                    className="h-10"
+                                >
+                                    <SelectOption value="Vasile">Vasile</SelectOption>
+                                    <SelectOption value="Maria">Maria</SelectOption>
+                                    <SelectOption value="Marc">Marc</SelectOption>
+                                    <SelectOption value="Alexandra">Alexandra</SelectOption>
+                                </Select>
+                            </div>
+                        </DialogBody>
+                        <DialogFooter>
+                            <div className="flex items-center justify-between text-primary text-lg me-3">
+                                <AttachMoney className="w-6 h-6 text-primary" /> <p className="mt-1">5.00</p>
+                            </div>
+                            <Button className="shadow-md bg-secondary hover:bg-primary"
+                                ripple
+                            >Add Member</Button>
+                        </DialogFooter>
+                    </Dialog>
                 </div>
             </div>
         </div>

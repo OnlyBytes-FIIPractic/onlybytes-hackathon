@@ -3,22 +3,23 @@ import CapsuleCard from './CapsuleCard'
 import { Typography } from '@material-tailwind/react'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import NewCapsule from './NewCapsule';
 
 const capsulesArr = [
     {
         id: 1,
         heading: "Roots and Wings Capsule",
         subHeading: "The Roots and Wings Capsule celebrates the foundational values and the soaring achievements of the family. Filled with generational stories, cherished family recipes, and major milestones like graduations and first homes, this capsule captures the essence of what keeps the family grounded as well as what allows future generations to fly.",
-        dateCreated: "2020-01-01T00:00:00",
-        targetDate: "2023-01-01T00:00:00",
+        dateCreated: "2015-01-01T00:00:00",
+        targetDate: "2020-01-01T00:00:00",
         open: false
     },
     {
         id: 2,
         heading: "Ancestral Anthology Capsule",
         subHeading: "Dedicated to the rich tapestry of the family's heritage, the Ancestral Anthology Capsule is a comprehensive collection of historical documents, vintage photographs, and oral histories. It serves as a bridge connecting current and future generations with their distant origins, offering insights into the family's roots spread across different cultures and continents.",
-        dateCreated: "2023-01-01T00:00:00",
-        targetDate: "2028-01-01T00:00:00",
+        dateCreated: "2020-01-01T00:00:00",
+        targetDate: "2023-01-01T00:00:00",
         open: false
 
     },
@@ -28,15 +29,6 @@ const capsulesArr = [
         subHeading: "The Festive Keepsake Capsule encapsulates the joy and spirit of family celebrations and traditions. From holiday decorations and snapshots of family reunions to videos of birthday parties and festive gatherings, this capsule preserves the laughter and love that define the family’s happiest moments together.",
         dateCreated: "2024-01-01T00:00:00",
         targetDate: "2029-01-01T00:00:00",
-        open: false
-
-    },
-    {
-        id: 4,
-        heading: "Legacy of Love Capsule",
-        subHeading: "This capsule is a heartfelt tribute to the enduring love and wisdom passed down through the family. It features letters of advice from older generations, wedding memorabilia, touching family vows, and poignant moments of family support and unity. The Legacy of Love Capsule is a treasure trove of emotional wealth, meant to inspire and guide the family through all of life’s ups and downs.",
-        dateCreated: "2030-01-01T00:00:00",
-        targetDate: "2035-01-01T00:00:00",
         open: false
 
     },
@@ -94,6 +86,7 @@ const Timeline = ({ }) => {
             ))}
             <Circle />
             <p className='text-center text-primary font-bold'>2035</p>
+            <NewCapsule timeToCreate={"2029-01-01T00:00:00"} />
 
         </div>
     )

@@ -5,7 +5,7 @@ import GiftAnimation from '../utils/GiftAnimation'
 const plans = [
     {
         name: 'Growth',
-        price: '29',
+        price: '9',
         features: [
             '5 gb of aditional storage',
 
@@ -14,9 +14,9 @@ const plans = [
     },
     {
         name: 'Pro',
-        price: '49',
+        price: '39',
         features: [
-            '10 gb of aditional storage',
+            '25 gb of aditional storage',
             'Shop discounts',
         ],
         featured: true
@@ -25,7 +25,7 @@ const plans = [
         name: 'Enterprise',
         price: '99',
         features: [
-            '50 gb of aditional storage',
+            '100 gb of aditional storage',
             'Shop discounts',
             'Premium support',
             'Discount for member adding'
@@ -58,18 +58,7 @@ const Plan = () => {
             <div className='mt-20'>
                 <ContactPlan />
             </div>
-            <iframe
-                style={{
-                    width: "600",
-                    height: "450",
-                    style: "border:0"
-                }}
-                loading="lazy"
-                allowfullscreen
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCE_kIMIakfN0QUCGyLaK_iEvCKzq8xv5c
-    &q=Space+Needle,Seattle+WA">
-            </iframe>
+
         </div>
     )
 }
