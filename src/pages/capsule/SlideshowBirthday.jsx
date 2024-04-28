@@ -10,7 +10,7 @@ import {
 
 
   
- const SlideshowGenerator = ({userId}) => {
+ const SlideshowBirthday = ({userId}) => {
     const [videoUrl, setVideoUrl] = useState('');
     const [downloaded, setDownloaded] = useState(false);
   
@@ -66,5 +66,5 @@ import {
       );
   };
   
-  export default SlideshowGenerator;
+  export default SlideshowBirthday;
 

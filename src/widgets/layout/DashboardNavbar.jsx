@@ -24,6 +24,7 @@ import {
 import { toast } from "react-toastify";
 import { Checkbox } from "@material-tailwind/react";
 
+
 const notifications = [
   {
     message: "Today's George birthday! Send him a gift!🎉🎁",
@@ -101,12 +102,16 @@ export function DashboardNavbar({ routes }) {
           >
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-white" />
           </IconButton>
+          <Link to={'/dashboard/birthdaycapsule'} >
+              <i className="fa-solid fa-gift fa-beat cursor-pointer mr-2" style={{color: "#ffffff"}} />
+          </Link>
           <Menu>
             <MenuHandler>
               <IconButton variant="text" color="blue-gray">
                 <BellIcon className="h-5 w-5 text-white" />
               </IconButton>
             </MenuHandler>
+            
             <MenuList className="border-0 bg-surface-dark max-w-sm max-h-[80vh] minimal-scrollbar text-surface-light">
               <div className="px-2 pb-1 flex justify-between items-center focus:outline-0">
                 <Typography variant="h5" className="min-w-[150px]">

@@ -7,10 +7,11 @@ import {
 } from "@material-tailwind/react";
 import { IconButton, Typography } from "@material-tailwind/react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
-import SlideshowGenerator from './Slideshow';
+import SlideshowGenerator from './SlideshowBirthday';
 import { UserAuth } from "@/context/AuthContext.jsx";
 import GiftAnimation from '../utils/GiftAnimation';
 import img from './purple-and-blue-background-ajp62v7qahujohnv.jpg'
+import SlideshowBirthday from './SlideshowBirthday';
 
 
 const images = [
@@ -158,7 +159,7 @@ const BirthdayCapsule = () => {
                                     <li class="font-semibold italic">Gift Cards</li>
                                     <li class="font-semibold italic">Received Money</li>
                                 </ul>
-                                <SlideshowGenerator userId={user.uid} />
+                                <SlideshowBirthday userId={user.uid} />
                             </Card>
                         </div>
                         <div className='flex flex-col justify-center items-center'>

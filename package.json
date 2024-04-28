@@ -17,6 +17,7 @@
     "@mui/material": "^5.15.15",
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide": "^4.1.4",
+    "ag-grid-react": "^31.2.1",
     "aos": "^2.3.4",
     "apexcharts": "3.44.0",
     "axios": "^1.6.7",
