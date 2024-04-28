@@ -30,6 +30,7 @@
   padding: 35px;
   border: 1px solid #ccc;
   border-radius: 100%;
+  cursor: pointer;
 }
 
 .children {

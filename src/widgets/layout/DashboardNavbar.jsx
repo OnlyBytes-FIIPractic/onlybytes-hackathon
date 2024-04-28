@@ -22,7 +22,25 @@ import {
   setOpenSidenav,
 } from "@/context";
 import { toast } from "react-toastify";
+import { Checkbox } from "@material-tailwind/react";
 
+const notifications = [
+  {
+    message: "Today's George birthday! Send him a gift!🎉🎁",
+    createdDate: "2024-04-28T12:00:00",
+    isReadHidden: false
+  },
+  {
+    message: "See what happend on this day in history!📜🔍",
+    createdDate: "2024-04-27T09:00:00",
+    isReadHidden: false
+  },
+  {
+    message: "See what's new in the shop! 🛍️🎁",
+    createdDate: "2024-04-26T09:00:00",
+    isReadHidden: true
+  },
+];
 
 export function DashboardNavbar({ routes }) {
   const [controller, dispatch] = useMaterialTailwindController();
@@ -83,6 +101,51 @@ export function DashboardNavbar({ routes }) {
           >
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-white" />
           </IconButton>
+          <Menu>
+            <MenuHandler>
+              <IconButton variant="text" color="blue-gray">
+                <BellIcon className="h-5 w-5 text-white" />
+              </IconButton>
+            </MenuHandler>
+            <MenuList className="border-0 bg-surface-dark max-w-sm max-h-[80vh] minimal-scrollbar text-surface-light">
+              <div className="px-2 pb-1 flex justify-between items-center focus:outline-0">
+                <Typography variant="h5" className="min-w-[150px]">
+                  Notifications
+                </Typography>
+              </div>
+              {notifications.length === 0 ?
+                <ListItem disabled className="!text-surface-light opacity-70">
+                  <strong>No new notifications</strong>
+                </ListItem>
+                :
+                notifications.map((notification, index) => {
+                  if (notification.isRead === true) {
+                    return null;
+                  }
+                  return (
+                    <Link to="/dashboard/send-gift">
+                      <ListItem key={`notif-${index}`} className="flex flex-col items-start w-full md:w-[20rem] focus:bg-surface-mid-dark focus:text-surface-light active:bg-surface-mid-dark active:text-surface-light" >
+                        <Typography variant="small" className="mb-1 font-normal ">
+                          <strong>{notification.message}</strong>
+                        </Typography>
+
+                        <div className="flex justify-between w-full">
+                          <Typography variant="small" className="flex items-center gap-1 text-xs font-normal opacity-60">
+                            <ClockIcon className="h-3.5 w-3.5 text-secondary" /> {formatDate(notification.createdDate)}
+                          </Typography>
+
+                          <Typography variant="small" className="flex items-center gap-1 text-xs font-normal opacity-60">
+                            <CheckIcon className="h-3.5 w-3.5" /> Read
+                          </Typography>
+                        </div>
+                      </ListItem>
+                    </Link>
+                  )
+                }
+                )
+              }
+            </MenuList>
+          </Menu>
           <Link to="/dashboard/profile">
             <Button
               variant="text"
@@ -98,7 +161,10 @@ export function DashboardNavbar({ routes }) {
             >
               <UserCircleIcon className="h-5 w-5 text-white" />
             </IconButton>
+
+
           </Link>
+
         </div>
       </div>
     </Navbar >
