@@ -25,7 +25,7 @@ export function SignIn() {
     try {
       await signIn(email, password)
       toast.success('Sign In successful')
-      navigate('/dashboard/profile')
+      navigate('/dashboard/home')
     } catch (e) {
       toast.error(e.message)
       console.log(e.message)
@@ -35,7 +35,7 @@ export function SignIn() {
     try {
       await signInWithGoogle();
       toast.success('Sign In successful')
-      navigate('/dashboard/profile')
+      navigate('/dashboard/home')
     } catch (e) {
       toast.error(e.message)
       console.log(e.message)
