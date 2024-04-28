@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import Webcam from "react-webcam";
-import { ref, uploadBytes } from "firebase/storage";
+import React, { useState, useEffect } from 'react';
+import Webcam from 'react-webcam';
+import { ref, uploadBytes } from 'firebase/storage';
 import { storage } from '@/configs/firebase';
 
 const WebcamRecord = () => {
@@ -33,30 +33,24 @@ const WebcamRecord = () => {
     const handleStopCaptureClick = React.useCallback(() => {
         mediaRecorderRef.current.stop();
         setCapturing(false);
-    }, [mediaRecorderRef, webcamRef, setCapturing]);
+    }, [mediaRecorderRef, setCapturing]);
 
     const handleDownload = React.useCallback(async () => {
-    if (recordedChunks.length) {
-        try {
-            // Create a storage reference with the desired name for the video
-            const storageRef = ref(storage, "videos/video.webm");
-            
-            // Upload the blob to Firebase Storage
-            await uploadBytes(storageRef, new Blob(recordedChunks, { type: "video/webm" }));
-            
-            console.log("Video uploaded successfully!");
-            
-            // Clear recordedChunks after successful upload
-            setRecordedChunks([]);
-        } catch (error) {
-            console.error("Error uploading video:", error);
+        if (recordedChunks.length) {
+            try {
+                const storageRef = ref(storage, "videos/video.webm");
+                await uploadBytes(storageRef, new Blob(recordedChunks, { type: "video/webm" }));
+                console.log("Video uploaded successfully!");
+                setRecordedChunks([]);
+            } catch (error) {
+                console.error("Error uploading video:", error);
+            }
         }
-    }
-}, [recordedChunks]);
+    }, [recordedChunks]);
 
     return (
         <div className='mt-2'>
-            <Webcam audio={false} ref={webcamRef} />
+            <Webcam audio={true} ref={webcamRef} />
             {capturing ? (
                 <button className='p-2 bg-primary text-white rounded-lg mt-2 mb-2' onClick={handleStopCaptureClick}>Stop Capture</button>
             ) : (
@@ -69,4 +63,4 @@ const WebcamRecord = () => {
     );
 }
 
-export default WebcamRecord
+export default WebcamRecord;
