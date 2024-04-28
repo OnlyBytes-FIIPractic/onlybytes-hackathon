@@ -75,10 +75,10 @@ const SendGift = () => {
                             </div>
                         </div>
                     )}
+                    <button className="mt-4 bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 block mb-5" onClick={handleOpenCamera}>Record a video message</button>
+                    {webcamOpen && <WebcamRecord />}
                     <button type="submit" className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300">Send Gift</button>
                 </form>
-                <button className="mt-4 bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300" onClick={handleOpenCamera}>Record a video message</button>
-                {webcamOpen && <WebcamRecord />}
             </div>
         </div>
     );
