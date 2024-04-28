@@ -36,7 +36,7 @@ const AddCapsuleModal = ({ modalOpen, handleClose, timeLeft }) => {
                             <p className='text-primary font-semibold'>Enter capsule description:</p>
                             <textarea className='w-[20rem] h-24 rounded-lg border-primary border-2' />
                         </div>
-                        <button className='mt-5 mx-auto p-2 rounded-lg font-bold text-lg transition-all duration-300 bg-primary hover:bg-secondary text-white' disabled>Create Capsule</button>
+                        <button className='mt-5 mx-auto p-2 rounded-lg font-bold text-lg transition-all duration-300 bg-primary text-white opacity-50' disabled>Create Capsule</button>
                     </div>
                 </div>
             </div>
