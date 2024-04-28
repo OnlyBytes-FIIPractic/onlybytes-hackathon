@@ -6,6 +6,8 @@ import {
     doc,
   } from "firebase/firestore";
  import { db } from '../../configs/firebase'
+ import DownloadIcon from '@mui/icons-material/Download';
+
 
   
  const SlideshowGenerator = ({userId}) => {
@@ -57,9 +59,9 @@ import {
                   className="shadow-md bg-secondary hover:bg-primary ml-auto"
                   ripple
                   onClick={generateSlideshow}>
-                  Generate Slideshow
+                  Download Slideshow
               </Button>
-              {downloaded && <p>Video downloaded</p>}
+              {downloaded && <p className='text-center mt-1 '>Download Successful</p>}
           </div>
       );
   };
