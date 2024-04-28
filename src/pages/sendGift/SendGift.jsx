@@ -42,7 +42,7 @@ const SendGift = () => {
     return (
         <div className="container mx-auto py-6">
             <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6">
-                <h2 className="text-2xl font-semibold text-gray-800 mb-4">Send a gift to Carl:</h2>
+                <h2 className="text-2xl font-semibold text-gray-800 mb-4">Send a gift to George:</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label className="block mb-2">Message:</label>

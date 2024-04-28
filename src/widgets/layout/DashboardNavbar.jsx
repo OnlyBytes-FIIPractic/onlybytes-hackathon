@@ -86,7 +86,7 @@ export function DashboardNavbar({ routes }) {
             {routes.map(
               ({ layout, pages }) =>
                 layout === "dashboard" &&
-                pages.map(({ path, name, element, index }) => name !== "Profile" && name !== "Capsule" && name !== "Home" && (
+                pages.map(({ path, name, element, index }) => name !== "Profile" && name !== "Capsule" && name !== "Home" && name !== "BirthdayCapsule" && (
                   <Link to={`/dashboard${path}`} key={index} >
                     <p className="text-white hover:text-yellow-700">{name}</p>
                   </Link>
