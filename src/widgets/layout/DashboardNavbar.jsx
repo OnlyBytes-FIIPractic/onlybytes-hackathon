@@ -101,24 +101,6 @@ export function DashboardNavbar({ routes }) {
           >
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-white" />
           </IconButton>
-          <Link to="/dashboard/profile">
-            <Button
-              variant="text"
-              color="blue-gray"
-              className="hidden items-center gap-1 text-primary px-4 xl:flex normal-case"
-            >
-              <UserCircleIcon className="h-5 w-5 text-white" />
-            </Button>
-            <IconButton
-              variant="text"
-              color="blue-gray"
-              className="grid xl:hidden"
-            >
-              <UserCircleIcon className="h-5 w-5 text-white" />
-            </IconButton>
-
-
-          </Link>
           <Menu>
             <MenuHandler>
               <IconButton variant="text" color="blue-gray">
@@ -164,6 +146,25 @@ export function DashboardNavbar({ routes }) {
               }
             </MenuList>
           </Menu>
+          <Link to="/dashboard/profile">
+            <Button
+              variant="text"
+              color="blue-gray"
+              className="hidden items-center gap-1 text-primary px-4 xl:flex normal-case"
+            >
+              <UserCircleIcon className="h-5 w-5 text-white" />
+            </Button>
+            <IconButton
+              variant="text"
+              color="blue-gray"
+              className="grid xl:hidden"
+            >
+              <UserCircleIcon className="h-5 w-5 text-white" />
+            </IconButton>
+
+
+          </Link>
+
         </div>
       </div>
     </Navbar >
