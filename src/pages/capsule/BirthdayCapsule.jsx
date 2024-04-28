@@ -80,7 +80,7 @@ const BirthdayCapsule = () => {
     const [open, setOpen] = useState(false);
     const [currentImage, setCurrentImage] = useState(images[0]);
     const { user } = UserAuth();
-    const [boxClicked, setBoxClicked] = useState(false); // State to track if the box was clicked
+    const [boxClicked, setBoxClicked] = useState(false);
 
     const handleOpen = (image) => {
         setCurrentImage(image);
@@ -98,7 +98,7 @@ const BirthdayCapsule = () => {
     };
 
     const handleBoxClick = () => {
-        setBoxClicked(true); // Update state when the box is clicked
+        setBoxClicked(true);
     };
 
 
