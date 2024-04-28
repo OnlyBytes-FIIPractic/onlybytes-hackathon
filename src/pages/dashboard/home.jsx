@@ -6,7 +6,7 @@ export function Home() {
     backgroundImage: `url(${bgImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    height: '90vh',
+    height: '55vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
