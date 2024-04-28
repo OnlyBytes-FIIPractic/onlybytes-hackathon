@@ -51,7 +51,6 @@ export const routes = [
         element: <Capsule />,
       },
       {
-        name: "BirthDayCapsule",
         path: "/birthdaycapsule",
         element: <BirthdayCapsule/>,
       },
