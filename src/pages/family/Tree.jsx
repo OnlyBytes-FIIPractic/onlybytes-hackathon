@@ -64,7 +64,7 @@ const TreeNode = ({ data, root = false, next = false }) => {
                             onClick={() => navigate(`/dashboard/family-member/${v4()}`)}
                             onMouseEnter={() => handlePopoverOpen2(data.partner)}
                             onMouseLeave={handlePopoverClose}
-                            style={{ borderRadius: '100%', backgroundImage: `url('../img/${data.img2}.webp')`, backgroundSize: 'cover', backgroundPosition: 'center', height: '40px', width: '40px' }}
+                            style={{ borderRadius: '100%', backgroundImage: `url('../img/${data.img2}.webp')`, backgroundSize: 'cover', backgroundPosition: 'center', height: '40px', width: '40px'}}
                         >
                             <></>
                         </span>

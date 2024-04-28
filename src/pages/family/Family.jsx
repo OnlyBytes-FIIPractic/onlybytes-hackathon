@@ -1,18 +1,18 @@
 import { Routes, Route } from "react-router-dom";
 import routes from "@/routes";
 import Tree from "./Tree";
-import {UserAuth} from "@/context/AuthContext.jsx";
-import {useEffect, useState} from "react";
-import {getFamilyByUserId} from "@/configs/firebaseFunctions.js";
+import { UserAuth } from "@/context/AuthContext.jsx";
+import { useEffect, useState } from "react";
+import { getFamilyByUserId } from "@/configs/firebaseFunctions.js";
 import CreateFamily from "@/pages/createFamily/CreateFamily.jsx";
-import {Spinner} from "@material-tailwind/react";
+import { Button, Spinner } from "@material-tailwind/react";
 
 export function Family() {
     const { user } = UserAuth();
     const [family, setFamily] = useState(null);
 
     const fetchFamily = async () => {
-        if(user.uid == null) return;
+        if (user.uid == null) return;
         const fetchedFamily = await getFamilyByUserId(user.uid);
         console.log(fetchedFamily)
         setFamily(fetchedFamily);
@@ -90,10 +90,10 @@ export function Family() {
         ]
     };
 
-    if(!user.uid) return <Spinner />
+    if (!user.uid) return <Spinner />
 
     if (!family) {
-        return <CreateFamily fetchFamily={fetchFamily}/>;
+        return <CreateFamily fetchFamily={fetchFamily} />;
     }
 
     return (
@@ -109,7 +109,10 @@ export function Family() {
                     )}
                 </Routes>
                 <div className="p-10 ms-10 shadow rounded bg-surface">
-                    <h1 className="text-2xl font-bold text-secondary">Family Tree</h1>
+                    <div className="w-full flex justify-between">
+                        <h1 className="text-2xl font-bold text-secondary">Family Tree</h1>
+                        <Button color="purple">Add Member</Button>
+                    </div>
                     <Tree root={mockTree} />
                 </div>
             </div>
