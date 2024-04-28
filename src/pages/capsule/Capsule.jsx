@@ -119,9 +119,9 @@ const Capsule = () => {
                     <h1 className='italic mt-4 text-2xl'>Your memories are here!</h1>
                     <p className='italic mt-10'>We've kept our promise! Now, prepare to be enthralled by the treasure trove we've created just for you. Take a heartfelt journey through your life's most precious moments, shared with your beloved family. Each memory, a gem, waiting to be discovered and cherished once more. So you received:</p>
 
-                    <ul class="list-disc list-inside mt-6">
-                        <li class="font-semibold italic">Your photo album containing memories starting from the moment you started the capsule</li>
-                        <li class="font-semibold italic">A video slideshow we made just for you</li>
+                    <ul className="list-disc list-inside mt-6">
+                        <li className="font-semibold italic">Your photo album containing memories starting from the moment you started the capsule</li>
+                        <li className="font-semibold italic">A video slideshow we made just for you</li>
                     </ul>
                     <img
                         src={images[3]}
