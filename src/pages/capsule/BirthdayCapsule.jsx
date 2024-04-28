@@ -11,6 +11,9 @@ import SlideshowGenerator from './Slideshow';
 import { UserAuth } from "@/context/AuthContext.jsx";
 import GiftAnimation from '../utils/GiftAnimation';
 import img from './purple-and-blue-background-ajp62v7qahujohnv.jpg'
+import birthdayVideo1 from '../../video/birthdayVideo1.webm'
+import birthdayVideo2 from '../../video/birthdayVideo2.webm'
+import birthdayVideo3 from '../../video/birthdayVideo3.webm'
 
 
 const images = [
@@ -58,22 +61,25 @@ const images = [
 
 const tippingData = {
     user1: {
-      username: 'John Doe',
-      amountTipped: 50
+        username: 'John Doe',
+        amountTipped: 50
     },
     user2: {
-      username: 'Alice Smith',
-      amountTipped: 30
+        username: 'Alice Smith',
+        video: birthdayVideo1,
+        amountTipped: 30
     },
     user3: {
-      username: 'Bob Johnson',
-      amountTipped: 100
+        username: 'Bob Johnson',
+        video: birthdayVideo2,
+        amountTipped: 100
     },
     user4: {
         username: 'John Bobson',
+        video: birthdayVideo3,
         amountTipped: 176
     }
-  };
+};
 
 const BirthdayCapsule = () => {
     const [active, setActive] = useState(1);
@@ -166,14 +172,14 @@ const BirthdayCapsule = () => {
                         <Card className="flex items-center justify-center border-3 border-brown-100/50 mx-3 p-10 mb-6 lg:mx-4 w-[76vw] overflow-x-auto">
                                 <h1 className='italic text-bold text-xl text-center mb-4'>Gift Cards</h1>
                                 <div className='flex'>
-                                {Object.entries(tippingData).map(([userId, { username, amountTipped }]) => (
+                                {Object.entries(tippingData).map(([userId, { username, amountTipped, video }]) => (
                                     <Card key={userId} className='mr-4 p-4'>
                                     <video
-                                        src="https://firebasestorage.googleapis.com/v0/b/onlybytes-hacakthon.appspot.com/o/videos%2Fvideo.webm?alt=media"
-                                        width="400"
-                                        height="300"
-                                        className='rounded-md'
-                                        controls
+                                      src={video || "https://firebasestorage.googleapis.com/v0/b/onlybytes-hacakthon.appspot.com/o/videos%2Fvideo.webm?alt=media"}
+                                      width="400"
+                                      height="300"
+                                      className='rounded-md'
+                                      controls
                                     ></video>
                                     <p className='text-center mt-3 font-bold'>{username}</p>
                                     <p className='text-center mt-3'>Tipped: {amountTipped}$</p>
